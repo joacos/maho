@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { format, addDays, getDay, startOfMonth, endOfMonth, eachDayOfInterval, isBefore, isSameDay, isToday } from "date-fns";
 import { es } from "date-fns/locale";
-import { Calendar as CalendarIcon, Clock, Lock, Unlock, Eye, Sparkles, Loader2, CheckCircle2, AlertCircle, ShieldAlert, AlertTriangle } from "lucide-react";
+import { Calendar as CalendarIcon, Clock, Lock, Unlock, Eye, Sparkles, Loader2, CheckCircle2, AlertCircle, ShieldAlert, AlertTriangle, FileText } from "lucide-react";
+import BlogAdminSection from "./_components/BlogAdminSection";
 
 interface Appointment {
   id: string;
@@ -27,6 +28,7 @@ interface BlockedSlot {
 }
 
 export default function AdminDashboardPage() {
+  const [activeTab, setActiveTab] = useState<"availability" | "blog">("availability");
   const [selectedDate, setSelectedDate] = useState<string>(format(addDays(new Date(), 2), "yyyy-MM-dd"));
   const [currentMonth, setCurrentMonth] = useState(new Date());
   
@@ -139,7 +141,40 @@ export default function AdminDashboardPage() {
 
   return (
     <div className="flex flex-col gap-8 animate-fade-in">
-      {/* Overview Banner */}
+      {/* Navigation Tabs */}
+      <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
+        <button
+          type="button"
+          onClick={() => setActiveTab("availability")}
+          className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl font-sans font-bold text-sm transition-all ${
+            activeTab === "availability"
+              ? "bg-primary text-white shadow-sm"
+              : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
+          }`}
+        >
+          <CalendarIcon className="w-4 h-4" />
+          <span>Gestión de Disponibilidad</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab("blog")}
+          className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl font-sans font-bold text-sm transition-all ${
+            activeTab === "blog"
+              ? "bg-primary text-white shadow-sm"
+              : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
+          }`}
+        >
+          <FileText className="w-4 h-4" />
+          <span>Gestión del Blog</span>
+        </button>
+      </div>
+
+      {activeTab === "blog" ? (
+        <BlogAdminSection />
+      ) : (
+        <>
+          {/* Overview Banner */}
       <div className="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
         <div className="flex flex-col gap-1.5">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary font-sans font-bold text-xs uppercase tracking-wider w-fit">
@@ -487,6 +522,8 @@ export default function AdminDashboardPage() {
 
         </div>
       </div>
+        </>
+      )}
     </div>
   );
 }
