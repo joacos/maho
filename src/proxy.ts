@@ -1,24 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export function proxy(req: NextRequest) {
-  const basicAuth = req.headers.get('authorization');
-
-  if (basicAuth) {
-    const authValue = basicAuth.split(' ')[1];
-    // Next.js middleware runs on Edge runtime, so atob is available
-    const [user, pwd] = atob(authValue).split(':');
-
-    if (user === 'maho' && pwd === 'guina2026') {
-      return NextResponse.next();
-    }
-  }
-
-  return new NextResponse('Authentication required', {
-    status: 401,
-    headers: {
-      'WWW-Authenticate': 'Basic realm="Secure Area"',
-    },
-  });
+  return NextResponse.next();
 }
 
 export const config = {
