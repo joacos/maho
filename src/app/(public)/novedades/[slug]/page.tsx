@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { ArrowLeft, Clock, Calendar, Heart, Share2, CalendarDays } from "lucide-react";
 
+export const dynamicParams = true;
+export const revalidate = 0;
+
 const MOCK_POSTS = [
   {
     id: "post-1",

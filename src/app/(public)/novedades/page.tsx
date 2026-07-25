@@ -3,6 +3,8 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { ArrowRight, BookOpen, Clock, Heart } from "lucide-react";
 
+export const revalidate = 0;
+
 const MOCK_POSTS = [
   {
     id: "post-1",
