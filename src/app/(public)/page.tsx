@@ -22,6 +22,11 @@ import {
   TrendingUp,
   TreePine,
 } from "lucide-react";
+import AudienceSection from "@/components/conversion/AudienceSection";
+import InterventionAreasSection from "@/components/conversion/InterventionAreasSection";
+import WorkProcessSection from "@/components/conversion/WorkProcessSection";
+import FaqSection from "@/components/conversion/FaqSection";
+import LeadFormSection from "@/components/conversion/LeadFormSection";
 
 // Mock de posts en caso de que la base de datos no esté conectada aún
 const MOCK_POSTS = [
@@ -148,148 +153,32 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 2. MI ENFOQUE INTEGRA */}
-      <section className="py-16 md:py-24 bg-surface">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 flex flex-col gap-4">
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-primary-dark tracking-tight">
-              Mi enfoque integra:
-            </h2>
-            <p className="font-sans text-base text-muted">
-              Pilares fundamentales para potenciar el aprendizaje y desarrollo desde el movimiento consciente.
-            </p>
-          </div>
+      {/* 2. ¿PARA QUIÉN ESTÁ DIRIGIDA? (Segregación por público objetivo) */}
+      <AudienceSection />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Pillar 1 */}
-            <div className="rounded-3xl bg-surface border border-border/60 hover:border-primary-light/50 shadow-sm hover:shadow-md transition-all p-8 flex flex-col gap-6">
-              <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                <Brain className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-display font-bold text-xl text-primary-dark mb-4 leading-tight">Estimulación Neurocognitiva</h3>
-                <p className="font-sans text-sm text-muted leading-relaxed">
-                  Fortalezco funciones ejecutivas como la atención, memoria de trabajo, flexibilidad cognitiva y el razonamiento mediante planes de intervención basados en la evidencia y la plasticidad neuronal.
-                </p>
-              </div>
-            </div>
+      {/* 3. ÁREAS DE INTERVENCIÓN (Servicios y evaluaciones especializadas) */}
+      <InterventionAreasSection />
 
-            {/* Pillar 2 */}
-            <div className="rounded-3xl bg-surface border border-border/60 hover:border-primary-light/50 shadow-sm hover:shadow-md transition-all p-8 flex flex-col gap-6">
-              <div className="w-12 h-12 rounded-2xl bg-accent/10 text-accent flex items-center justify-center shrink-0">
-                <Eye className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-display font-bold text-xl text-primary-dark mb-4 leading-tight">Integración Sensorial</h3>
-                <p className="font-sans text-sm text-muted leading-relaxed">
-                  Promuevo el procesamiento adecuado de los estímulos del entorno, facilitando una mejor respuesta adaptativa, autorregulación y organización neurofisiológica a través de experiencias táctiles, visuales y propioceptivas.
-                </p>
-              </div>
-            </div>
-
-            {/* Pillar 3 */}
-            <div className="rounded-3xl bg-surface border border-border/60 hover:border-primary-light/50 shadow-sm hover:shadow-md transition-all p-8 flex flex-col gap-6">
-              <div className="w-12 h-12 rounded-2xl bg-primary-light/10 text-primary-light flex items-center justify-center shrink-0">
-                <Hand className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-display font-bold text-xl text-primary-dark mb-4 leading-tight">Desarrollo Psicomotor</h3>
-                <p className="font-sans text-sm text-muted leading-relaxed">
-                  Potencio la conciencia corporal, coordinación bilateral y equilibrio mediante dinámicas de movimiento consciente, ejercicios marciales y técnicas de malabarismo adaptados, transformando el movimiento en aprendizaje.
-                </p>
-              </div>
-            </div>
-
-            {/* Pillar 4 */}
-            <div className="rounded-3xl bg-surface border border-border/60 hover:border-primary-light/50 shadow-sm hover:shadow-md transition-all p-8 flex flex-col gap-6">
-              <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                <Heart className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-display font-bold text-xl text-primary-dark mb-4 leading-tight">Intervención Psicopedagógica</h3>
-                <ul className="font-sans text-sm text-muted leading-relaxed list-disc list-outside pl-4 space-y-1">
-                  <li>Orientación y acompañamiento</li>
-                  <li>Diseño de programas neurocognitivos</li>
-                  <li>Mediación para el aprendizaje significativo</li>
-                  <li>Abordaje integral y sensorial</li>
-                  <li>Fortalecimiento de la lectoescritura</li>
-                  <li>Acompañamiento a la diversidad</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. MI ENFOQUE Y FILOSOFÍA — Portfolio-style pills + circular photos (Interactive) */}
+      {/* 4. MI ENFOQUE Y FILOSOFÍA */}
       <section className="py-16 md:py-24 bg-surface-muted border-y border-border/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <EnfoqueFilosofia />
         </div>
       </section>
 
-      {/* 4. QUÉ OFREZCO */}
-      <section className="py-16 md:py-24 bg-surface">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 flex flex-col gap-4">
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-primary-dark tracking-tight">
-              ¿Qué ofrezco?
-            </h2>
-            <p className="font-sans text-base text-muted">
-              Distintas modalidades para acompañar a niños y niñas en su desarrollo integral.
-            </p>
-          </div>
+      {/* 5. ¿CÓMO TRABAJAMOS? (Proceso en 5 pasos) */}
+      <WorkProcessSection />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            <div className="flex items-center gap-4 p-6 rounded-3xl bg-surface-muted border border-border/60">
-              <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                <Target className="w-6 h-6" />
-              </div>
-              <p className="font-sans font-medium text-primary-dark leading-snug">
-                Clases de movimiento y actividades psicomotoras con enfoque formativo y valórico.
-              </p>
-            </div>
-            
-            <div className="flex items-center gap-4 p-6 rounded-3xl bg-surface-muted border border-border/60">
-              <div className="w-12 h-12 rounded-full bg-accent/10 text-accent flex items-center justify-center shrink-0">
-                <Heart className="w-6 h-6" />
-              </div>
-              <p className="font-sans font-medium text-primary-dark leading-snug">
-                Intervenciones psicomotoras individuales y grupales.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-4 p-6 rounded-3xl bg-surface-muted border border-border/60">
-              <div className="w-12 h-12 rounded-full bg-primary-light/10 text-primary-light flex items-center justify-center shrink-0">
-                <Brain className="w-6 h-6" />
-              </div>
-              <p className="font-sans font-medium text-primary-dark leading-snug">
-                Estrategias psicopedagógicas para potenciar el aprendizaje desde el movimiento.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-4 p-6 rounded-3xl bg-surface-muted border border-border/60">
-              <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                <SmilePlus className="w-6 h-6" />
-              </div>
-              <p className="font-sans font-medium text-primary-dark leading-snug">
-                Acompañamiento respetuoso que considera las necesidades de cada niño/a.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. DYNAMIC FEED NOVEDADES */}
-      <section className="py-16 md:py-24 bg-surface-muted border-t border-border/20">
+      {/* 6. DYNAMIC FEED NOVEDADES */}
+      <section className="py-16 md:py-24 bg-surface border-b border-border/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-end mb-16 gap-4">
             <div className="flex flex-col gap-4 max-w-2xl">
               <h2 className="font-display font-bold text-3xl sm:text-4xl text-primary-dark tracking-tight">
-                Novedades, Consejos y Próximos Talleres
+                Novedades y Artículos
               </h2>
               <p className="font-sans text-base text-muted">
-                Artículos sobre aprendizaje en la naturaleza, guías de estimulación integral y registros fotográficos de nuestras actividades en los bosques de Valdivia.
+                Recursos, guías de estimulación cognitiva y artículos sobre aprendizaje y neurodesarrollo.
               </p>
             </div>
             <Link
@@ -347,43 +236,14 @@ export default async function HomePage() {
               </article>
             ))}
           </div>
-
-          <div className="sm:hidden flex justify-center mt-10">
-            <Link
-              href="/novedades"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface hover:bg-border/60 text-primary font-sans font-bold text-sm border border-border/80 transition-all w-full justify-center"
-            >
-              <span>Ver Todo el Blog</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* 6. CTA BANNER FINAL */}
-      <section className="py-12 md:py-20 bg-primary-dark text-surface relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute top-1/2 left-10 w-80 h-80 rounded-full bg-primary-light blur-3xl" />
-          <div className="absolute bottom-0 right-10 w-96 h-96 rounded-full bg-accent blur-3xl" />
-        </div>
+      {/* 7. PREGUNTAS FRECUENTES (Resolución de dudas para conversión) */}
+      <FaqSection />
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center gap-6 relative">
-          <TreePine className="w-12 h-12 text-primary-light" />
-          <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-tight leading-tight">
-            ¿Listos para aprender en el bosque?
-          </h2>
-          <p className="font-sans text-base text-surface/85 max-w-xl leading-relaxed">
-            Reserva una experiencia de aprendizaje y crecimiento al aire libre para tus hijos hoy mismo. Elige el taller y el horario ideal.
-          </p>
-          <Link
-            href="/agendar"
-            className="inline-flex justify-center items-center gap-2 px-8 py-4 rounded-full bg-primary-light hover:bg-primary text-primary-dark hover:text-surface font-sans font-bold text-base shadow-lg transition-all hover:-translate-y-0.5 mt-2 w-full sm:w-auto"
-          >
-            <Calendar className="w-5 h-5" />
-            <span>Reservar una Experiencia</span>
-          </Link>
-        </div>
-      </section>
+      {/* 8. FORMULARIO DE CAPTURA DE LEADS Y CONTACTO DIRECTO WHATSAPP */}
+      <LeadFormSection />
     </div>
   );
 }
