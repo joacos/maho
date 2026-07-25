@@ -26,7 +26,6 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-      // 1. Intentar registrar en base de datos real si está conectada
       const service = await prisma.service.findUnique({
         where: { id: serviceId },
       });
@@ -38,7 +37,6 @@ export async function POST(request: NextRequest) {
       let appointment;
 
       if (service.type === ServiceType.WORKSHOP) {
-        // Reservar en taller grupal
         if (!workshopId) {
           return NextResponse.json(
             { message: "Identificador de taller obligatorio para servicios grupales." },
@@ -46,7 +44,6 @@ export async function POST(request: NextRequest) {
           );
         }
 
-        // Transacción para evitar sobreventa (race conditions)
         appointment = await prisma.$transaction(async (tx) => {
           const workshop = await tx.workshop.findUnique({
             where: { id: workshopId },
@@ -60,13 +57,11 @@ export async function POST(request: NextRequest) {
             throw new Error("El taller no tiene cupos disponibles.");
           }
 
-          // Incrementar bookings
           await tx.workshop.update({
             where: { id: workshopId },
             data: { currentBookings: { increment: 1 } },
           });
 
-          // Crear cita
           return tx.appointment.create({
             data: {
               serviceId,
@@ -80,10 +75,7 @@ export async function POST(request: NextRequest) {
           });
         });
       } else {
-        // Reservar sesión individual
-        // Transacción para registrar/bloquear slot de tiempo
         appointment = await prisma.$transaction(async (tx) => {
-          // Intentar buscar un slot existente para esa fecha y hora
           let slot = await tx.timeSlot.findFirst({
             where: {
               serviceId,
@@ -98,13 +90,11 @@ export async function POST(request: NextRequest) {
               throw new Error("El horario seleccionado ya no está disponible.");
             }
 
-            // Actualizar a reservado
             slot = await tx.timeSlot.update({
               where: { id: slot.id },
               data: { isBooked: true },
             });
           } else {
-            // Si no existe el slot pre-generado, lo creamos directamente como booked
             slot = await tx.timeSlot.create({
               data: {
                 serviceId,
@@ -116,7 +106,6 @@ export async function POST(request: NextRequest) {
             });
           }
 
-          // Crear cita vinculada al slot
           return tx.appointment.create({
             data: {
               serviceId,
@@ -131,7 +120,6 @@ export async function POST(request: NextRequest) {
         });
       }
 
-      // Además, capturar este cliente confirmado en la tabla de Leads / CRM
       try {
         await prisma.lead.upsert({
           where: { email: clientEmail },
@@ -154,7 +142,6 @@ export async function POST(request: NextRequest) {
         console.warn("No se pudo registrar/actualizar el lead en CRM:", leadErr);
       }
 
-      // Si el método de pago es GATEWAY, simulamos el initPoint de Mercado Pago
       const initPoint = paymentMethod === "GATEWAY" 
         ? `https://www.mercadopago.cl/checkout/v1/redirect?pref_id=mock-${appointment.id}` 
         : null;
@@ -168,7 +155,6 @@ export async function POST(request: NextRequest) {
     } catch (dbError: any) {
       console.warn("Base de datos no conectada para procesar la cita, usando modo mock de alta fidelidad.", dbError.message);
       
-      // Fallback de alta fidelidad
       const mockAppointmentId = `appt-mock-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
       const initPoint = paymentMethod === "GATEWAY" 
         ? `https://www.mercadopago.cl/checkout/v1/redirect?pref_id=mock-${mockAppointmentId}` 

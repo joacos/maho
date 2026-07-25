@@ -15,7 +15,6 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-      // Intentar upsert en base de datos real
       const lead = await prisma.lead.upsert({
         where: { email },
         update: {
@@ -45,7 +44,6 @@ export async function POST(request: NextRequest) {
       });
     } catch (dbError) {
       console.warn("Base de datos no conectada al registrar lead, usando modo mock.");
-      // Fallback: mock success response
       return NextResponse.json({
         success: true,
         leadId: `lead-mock-${Math.random().toString(36).substr(2, 9)}`,

@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { ServiceType } from "@prisma/client";
 
 // Mocks temporales en memoria para persistir estados del admin en modo demo
 let mockBlockedDays: string[] = ["2026-05-28"];
@@ -84,7 +83,7 @@ export async function POST(request: NextRequest) {
       if (action === "BLOCK_DAY") {
         await prisma.availabilityException.upsert({
           where: {
-            id: `block-${date}`, // Just a deterministic ID for convenience
+            id: `block-${date}`,
           },
           update: {
             isBlocked: true,
@@ -101,7 +100,6 @@ export async function POST(request: NextRequest) {
           return NextResponse.json({ message: "startTime y endTime son requeridos." }, { status: 400 });
         }
         
-        // Crear slot reservado en la DB para bloquearlo de cara al público
         await prisma.timeSlot.create({
           data: {
             serviceId: serviceId || "serv-1",
@@ -121,7 +119,6 @@ export async function POST(request: NextRequest) {
 
       return NextResponse.json({ success: true, message: "Operación realizada con éxito." });
     } catch (dbError) {
-      // Fallback mocks
       if (action === "BLOCK_DAY") {
         if (!mockBlockedDays.includes(date)) {
           mockBlockedDays.push(date);

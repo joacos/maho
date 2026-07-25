@@ -42,7 +42,6 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    // 1. Verificar si el día completo está bloqueado en base de datos
     const isDayBlocked = await prisma.availabilityException.findFirst({
       where: {
         date: new Date(dateStr),
@@ -55,14 +54,12 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ slots: [] });
     }
 
-    // Intentar consultar desde base de datos real si está conectada
     const dbService = await prisma.service.findUnique({
       where: { id: serviceId },
     });
 
     if (dbService) {
       if (dbService.type === ServiceType.WORKSHOP) {
-        // Consultar workshops reales
         const dbWorkshops = await prisma.workshop.findMany({
           where: {
             serviceId,
@@ -93,7 +90,6 @@ export async function GET(request: NextRequest) {
           return NextResponse.json({ slots });
         }
       } else {
-        // Consultar slots individuales reales
         const dbSlots = await prisma.timeSlot.findMany({
           where: {
             serviceId,
@@ -125,11 +121,8 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // Si la DB está conectada pero no hay datos, o si falla la DB, caemos en el fallback de mocks
     throw new Error("No data found or database disconnected. Fallback to mocks.");
   } catch (error) {
-    // 2. Fallback de alta fidelidad con datos simulados
-    // Simular que el día "2026-05-28" está bloqueado por defecto
     if (dateStr === "2026-05-28") {
       return NextResponse.json({ slots: [] });
     }
@@ -137,9 +130,7 @@ export async function GET(request: NextRequest) {
     const service = MOCK_SERVICES.find((s) => s.id === serviceId) || MOCK_SERVICES[0];
     const duration = service.duration;
 
-
     if (service.type === ServiceType.WORKSHOP) {
-      // Retornar talleres simulados en dos horarios típicos
       const slots = [
         {
           id: `w-mock-${serviceId}-morning`,
@@ -158,7 +149,6 @@ export async function GET(request: NextRequest) {
       ];
       return NextResponse.json({ slots });
     } else {
-      // Retornar slots individuales simulados
       const startTimes = ["09:00", "10:30", "12:00", "15:00", "16:30", "18:00"];
       const slots = startTimes.map((start, index) => ({
         id: `slot-mock-${serviceId}-${index}`,
@@ -170,7 +160,6 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// Función auxiliar para calcular hora de término
 function calculateEndTime(startTime: string, durationMinutes: number): string {
   const [hours, minutes] = startTime.split(":").map(Number);
   const totalMinutes = hours * 60 + minutes + durationMinutes;

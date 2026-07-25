@@ -49,7 +49,6 @@ const MOCK_POSTS: MockPost[] = [
   },
 ];
 
-// Memory store for mock mode when DB is unavailable
 let memoryPosts: MockPost[] = [...MOCK_POSTS];
 
 export async function GET() {
@@ -58,7 +57,7 @@ export async function GET() {
       orderBy: { createdAt: "desc" },
     });
 
-    if (posts.length > 0) {
+    if (posts && posts.length > 0) {
       return NextResponse.json({ posts, source: "db" });
     }
   } catch (err) {
@@ -106,7 +105,6 @@ export async function POST(req: NextRequest) {
       }
     } catch (dbErr) {
       console.warn("DB Fallback en POST /api/admin/posts");
-      // Memory fallback
       const existingIdx = memoryPosts.findIndex((p) => p.id === id || p.slug === slug);
       const newPost = {
         id: id || `post-${Date.now()}`,
