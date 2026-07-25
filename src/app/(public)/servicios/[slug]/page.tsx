@@ -8,66 +8,66 @@ import { Heart, Calendar, Clock, Banknote, CheckCircle, ArrowLeft } from "lucide
 const MOCK_SERVICES = [
   {
     id: "serv-1",
-    slug: "acompanamiento-cognitivo-individual",
-    name: "Acompañamiento Cognitivo Individual",
-    description: "Sesión personalizada enfocada en potenciar habilidades cognitivas, funciones ejecutivas, memoria y procesos de aprendizaje en niños, adolescentes y adultos.",
-    type: ServiceType.INDIVIDUAL,
+    slug: "clases-de-movimiento",
+    name: "Clases de movimiento psicomotor",
+    description: "Actividades con enfoque formativo y valórico para potenciar el desarrollo integral a través del movimiento consciente.",
+    type: ServiceType.WORKSHOP,
     duration: 60,
-    price: 35000.0,
+    price: 15000.0,
     features: [
-      "Evaluación y diagnóstico continuo del progreso.",
-      "Plan de trabajo 100% personalizado según necesidades.",
-      "Ejercicios prácticos de memoria, atención y razonamiento lógico.",
-      "Acompañamiento y orientación a los padres/tutores.",
-      "Estimulación de funciones ejecutivas (planificación y organización)."
+      "Actividades prácticas de estimulación psicomotora.",
+      "Juegos y dinámicas de sociabilización grupal.",
+      "Enfoque en desarrollo valórico y disciplina consciente.",
+      "Grupos reducidos para atención focalizada.",
+      "Incluye todos los materiales interactivos."
     ]
   },
   {
     id: "serv-2",
-    slug: "evaluacion-psicopedagogica-completa",
-    name: "Evaluación Psicopedagógica Completa",
-    description: "Evaluación diagnóstica integral para identificar dificultades de aprendizaje, estilo cognitivo, y áreas fuertes para trazar un plan de apoyo adaptado.",
+    slug: "intervenciones-psicomotoras",
+    name: "Intervenciones Psicomotoras",
+    description: "Sesiones individuales o grupales orientadas a trabajar la autorregulación, habilidades motrices y sociales.",
     type: ServiceType.INDIVIDUAL,
-    duration: 90,
-    price: 45000.0,
+    duration: 60,
+    price: 35000.0,
     features: [
-      "Aplicación de pruebas psicométricas estandarizadas.",
-      "Análisis exhaustivo del estilo de aprendizaje y ritmo cognitivo.",
-      "Entrevista en profundidad con los padres/tutores.",
-      "Informe clínico psicopedagógico detallado.",
-      "Recomendaciones concretas para el colegio y el hogar."
+      "Evaluación y diagnóstico inicial.",
+      "Plan de trabajo 100% personalizado según necesidades.",
+      "Ejercicios prácticos de autorregulación emocional.",
+      "Acompañamiento y orientación a los padres/tutores.",
+      "Desarrollo de habilidades motrices y espaciales."
     ]
   },
   {
     id: "serv-3",
-    slug: "taller-estimulacion-temprana",
-    name: "Taller de Estimulación Temprana",
-    description: "Sesiones grupales lúdicas diseñadas para potenciar el desarrollo integral (motor, social y cognitivo) en niños pequeños de 3 a 5 años.",
-    type: ServiceType.WORKSHOP,
-    duration: 90,
-    price: 15000.0,
+    slug: "estrategias-psicopedagogicas",
+    name: "Estrategias Psicopedagógicas",
+    description: "Sesión enfocada en potenciar el aprendizaje desde el movimiento y la integración sensorial.",
+    type: ServiceType.INDIVIDUAL,
+    duration: 60,
+    price: 35000.0,
     features: [
-      "Actividades de motricidad fina y coordinación espacial.",
-      "Juegos y dinámicas de sociabilización grupal.",
-      "Estimulación de lenguaje y vocabulario a través de cuentos y cantos.",
-      "Grupos reducidos (máximo 8 niños) para atención focalizada.",
-      "Incluye todos los materiales lúdicos e interactivos."
+      "Estimulación de funciones ejecutivas (atención, memoria).",
+      "Abordaje de dificultades específicas del aprendizaje.",
+      "Uso del movimiento como canal para el aprendizaje significativo.",
+      "Estrategias para mejorar la lectoescritura.",
+      "Recomendaciones concretas para el colegio y el hogar."
     ]
   },
   {
     id: "serv-4",
-    slug: "taller-tecnicas-de-estudio",
-    name: "Taller de Técnicas de Estudio y Concentración",
-    description: "Taller práctico para estudiantes de educación básica y media, donde aprenderán a organizar su tiempo, hacer resúmenes efectivos y mejorar su foco.",
-    type: ServiceType.WORKSHOP,
-    duration: 120,
-    price: 20000.0,
+    slug: "acompanamiento-respetuoso",
+    name: "Acompañamiento Personalizado",
+    description: "Acompañamiento respetuoso y clínico que considera las necesidades específicas de cada niño/a.",
+    type: ServiceType.INDIVIDUAL,
+    duration: 90,
+    price: 45000.0,
     features: [
-      "Método Pomodoro aplicado a la dosificación del estudio.",
-      "Técnicas de síntesis: mapas mentales, resúmenes y esquemas visuales.",
-      "Estrategias de concentración y reducción de distractores.",
-      "Control de la ansiedad y técnicas de relajación ante exámenes.",
-      "Entrega de una bitácora o planificador de estudio personalizado."
+      "Abordaje desde un enfoque clínico cualitativo integral.",
+      "Respeto a la neurodivergencia y ritmos de aprendizaje.",
+      "Entrevista en profundidad con los padres/tutores.",
+      "Informe clínico psicopedagógico detallado.",
+      "Monitoreo continuo y adaptativo del proceso."
     ]
   },
 ];

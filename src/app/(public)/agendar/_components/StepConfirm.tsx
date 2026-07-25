@@ -130,7 +130,7 @@ export function StepConfirm() {
             <li><strong>Banco:</strong> Banco de Chile</li>
             <li><strong>Tipo de Cuenta:</strong> Cuenta Corriente</li>
             <li><strong>Número de Cuenta:</strong> 123-45678-90</li>
-            <li><strong>Nombre del Destinatario:</strong> Valeria Mahon</li>
+            <li><strong>Nombre del Destinatario:</strong> Maho Cayun</li>
             <li><strong>RUT:</strong> 12.345.678-9</li>
             <li><strong>Correo de Envío:</strong> pagos@psicopedagogiavaldivia.cl</li>
             <li><strong>Monto a Transferir:</strong> ${selectedService?.price.toLocaleString("es-CL")} CLP</li>

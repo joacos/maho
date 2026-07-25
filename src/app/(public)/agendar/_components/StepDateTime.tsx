@@ -50,16 +50,19 @@ export function StepDateTime() {
   };
 
   const isDateDisabled = (date: Date) => {
-    // Disable past dates (excluding today)
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    if (isBefore(date, today)) return true;
+    // Disable dates within 2 days from today
+    const minDate = new Date();
+    minDate.setHours(0, 0, 0, 0);
+    minDate.setDate(minDate.getDate() + 2); // At least 2 days in advance
+
+    if (isBefore(date, minDate)) return true;
 
     // Disable Sundays
     if (getDay(date) === 0) return true;
 
     return false;
   };
+
 
   const handleDateSelect = (date: Date) => {
     const formattedDate = format(date, "yyyy-MM-dd");
@@ -117,7 +120,7 @@ export function StepDateTime() {
             Paso 2: Fecha y Hora
           </h2>
           <p className="font-sans text-sm text-muted">
-            Elige el día y bloque de horario disponible para tu sesión.
+            Elige el día y bloque de horario disponible. Por coordinación y arriendo de box, las reservas requieren al menos 48 horas de anticipación.
           </p>
         </div>
         

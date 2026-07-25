@@ -12,7 +12,7 @@ const MOCK_POSTS = [
     excerpt: "La lectura no debe ser una obligación. Te presentamos 5 consejos prácticos basados en psicopedagogía para hacer que tus hijos amen los libros desde pequeños.",
     coverImage: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800&auto=format&fit=crop",
     publishedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 10),
-    authorName: "Valeria Mahon",
+    authorName: "Maho Cayun",
     content: `La lectura es una de las herramientas más poderosas para el desarrollo cognitivo y emocional de los niños. Sin embargo, en la era de las pantallas, lograr que un niño tome un libro por iniciativa propia puede parecer una tarea titánica. 
 
 Como psicopedagoga, constantemente recibo padres preocupados porque sus hijos 'odian leer'. Mi primera respuesta siempre es la misma: **la lectura no debe imponerse, debe contagiarse**.
@@ -43,7 +43,7 @@ Recuerda que cada niño tiene su propio ritmo de aprendizaje. El objetivo no es 
     excerpt: "Descubre cómo organizar tus sesiones de estudio y aplicar técnicas eficaces para calmar la ansiedad antes de las evaluaciones importantes.",
     coverImage: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800&auto=format&fit=crop",
     publishedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 5),
-    authorName: "Valeria Mahon",
+    authorName: "Maho Cayun",
     content: `La época de exámenes suele ser sinónimo de altos niveles de estrés, procrastinación y cansancio extremo para muchos estudiantes. Muchas veces, el problema no es la falta de estudio, sino **cómo** se estudia y cómo se maneja la presión emocional.
 
 Para estudiar de forma inteligente y mantener la calma, es fundamental aplicar técnicas basadas en cómo nuestro cerebro procesa y retiene la información.
@@ -75,7 +75,7 @@ Aplicar estos hábitos de estudio no solo mejorará tus calificaciones, sino que
     excerpt: "Explora cómo la psicopedagogía interviene de manera temprana para potenciar el neurodesarrollo infantil, abriendo canales de aprendizaje flexibles y divertidos.",
     coverImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop",
     publishedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 1),
-    authorName: "Valeria Mahon",
+    authorName: "Maho Cayun",
     content: `Cuando escuchamos la palabra **'Psicopedagogía'**, usualmente la asociamos de inmediato con colegios, malas notas o dificultades específicas como la dislexia. Sin embargo, la disciplina tiene un campo de acción mucho más amplio, preventivo y enriquecedor: **la estimulación cognitiva infantil**.
 
 La estimulación cognitiva consiste en un conjunto de actividades y juegos dirigidos a mejorar o mantener las capacidades cerebrales de los niños. Durante los primeros años de vida, el cerebro infantil tiene una plasticidad asombrosa; cada juego, cada interacción y cada desafío crea nuevas conexiones neuronales.
@@ -179,7 +179,7 @@ export default async function DetalleNovedadPage({ params }: PageProps) {
                 year: "numeric"
               }) : "Novedades"}</span>
               <span className="text-border">&bull;</span>
-              <span>Por {post.authorName || "Valeria Mahon"}</span>
+              <span>Por {post.authorName || "Maho Cayun"}</span>
             </div>
 
             {/* Title */}

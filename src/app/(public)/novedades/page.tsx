@@ -11,7 +11,7 @@ const MOCK_POSTS = [
     excerpt: "La lectura no debe ser una obligación. Te presentamos 5 consejos prácticos basados en psicopedagogía para hacer que tus hijos amen los libros desde pequeños.",
     coverImage: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800&auto=format&fit=crop",
     publishedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 10), // Hace 10 días
-    authorName: "Valeria Mahon",
+    authorName: "Maho Cayun",
   },
   {
     id: "post-2",
@@ -20,7 +20,7 @@ const MOCK_POSTS = [
     excerpt: "Descubre cómo organizar tus sesiones de estudio y aplicar técnicas eficaces para calmar la ansiedad antes de las evaluaciones importantes.",
     coverImage: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800&auto=format&fit=crop",
     publishedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 5), // Hace 5 días
-    authorName: "Valeria Mahon",
+    authorName: "Maho Cayun",
   },
   {
     id: "post-3",
@@ -29,7 +29,7 @@ const MOCK_POSTS = [
     excerpt: "Explora cómo la psicopedagogía interviene de manera temprana para potenciar el neurodesarrollo infantil, abriendo canales de aprendizaje flexibles y divertidos.",
     coverImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop",
     publishedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 1), // Hace 1 día
-    authorName: "Valeria Mahon",
+    authorName: "Maho Cayun",
   },
 ];
 
@@ -101,7 +101,7 @@ export default async function NovedadesPage() {
 
                 <div className="flex items-center justify-between pt-6 border-t border-border/20 mt-4">
                   <span className="font-sans text-xs text-muted/80 font-medium">
-                    Por {post.authorName || "Valeria Mahon"}
+                    Por {post.authorName || "Maho Cayun"}
                   </span>
                   
                   <Link

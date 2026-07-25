@@ -189,7 +189,7 @@ Recuerda que cada niño tiene su propio ritmo de aprendizaje. El objetivo no es 
       coverImage: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800&auto=format&fit=crop",
       published: true,
       publishedAt: new Date(hoy.getTime() - 1000 * 60 * 60 * 24 * 10), // Hace 10 días
-      authorName: "Valeria Mahon",
+      authorName: "Maho Cayun",
     },
   });
 
@@ -224,7 +224,7 @@ Aplicar estos hábitos de estudio no solo mejorará tus calificaciones, sino que
       coverImage: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800&auto=format&fit=crop",
       published: true,
       publishedAt: new Date(hoy.getTime() - 1000 * 60 * 60 * 24 * 5), // Hace 5 días
-      authorName: "Valeria Mahon",
+      authorName: "Maho Cayun",
     },
   });
 
@@ -256,7 +256,7 @@ Si tienes dudas sobre cómo potenciar las habilidades de tus hijos, te invito a 
       coverImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop",
       published: true,
       publishedAt: new Date(hoy.getTime() - 1000 * 60 * 60 * 24 * 1), // Hace 1 día
-      authorName: "Valeria Mahon",
+      authorName: "Maho Cayun",
     },
   });
 

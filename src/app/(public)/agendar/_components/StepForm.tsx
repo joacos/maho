@@ -26,7 +26,7 @@ export function StepForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<ClientDataInput>({
-    resolver: zodResolver(clientDataSchema),
+    resolver: zodResolver(clientDataSchema) as any,
     defaultValues: {
       name: clientData.name,
       email: clientData.email,

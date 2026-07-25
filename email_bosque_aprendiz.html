@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmación de Sesión - BosqueAprendiz</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* Reset styles */
+    body,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    table,
+    td,
+    div {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #F8F7FA;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #2A2433;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    .wrapper {
+      width: 100%;
+      background-color: #F8F7FA;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(88, 49, 107, 0.08);
+      border: 1px solid #DCD6E3;
+    }
+
+    .header {
+      background-color: #F8F7FA;
+      padding: 40px 30px;
+      text-align: center;
+      background-image: linear-gradient(135deg, rgba(248, 247, 250, 1) 0%, rgba(240, 237, 244, 1) 40%, rgba(133, 97, 154, 0.15) 100%);
+      border-bottom: 1px solid #DCD6E3;
+    }
+
+    .header h1 {
+      color: #321644;
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    .header p {
+      color: #85619A;
+      font-size: 15px;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+
+    .header img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 12px;
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 12px rgba(88, 49, 107, 0.12);
+    }
+
+    .content {
+      padding: 40px 30px;
+    }
+
+    .greeting {
+      font-size: 18px;
+      font-weight: 600;
+      color: #321644;
+      margin-bottom: 20px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .text-paragraph {
+      color: #6B5E78;
+      font-size: 15px;
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+
+    .section-box {
+      background-color: #F0EDF4;
+      border-left: 4px solid #D7975E;
+      padding: 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #58316B;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .section-text {
+      color: #2A2433;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .highlight {
+      font-weight: 600;
+      color: #321644;
+    }
+
+    .bank-details {
+      background-color: #ffffff;
+      border: 1px dashed #85619A;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 10px;
+    }
+
+    .bank-details table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .bank-details td {
+      padding: 6px 0;
+      font-size: 14px;
+      color: #2A2433;
+    }
+
+    .bank-details td:first-child {
+      font-weight: 600;
+      color: #58316B;
+      width: 45%;
+    }
+
+    .footer {
+      background-color: #F8F7FA;
+      padding: 30px;
+      text-align: center;
+      border-top: 1px solid #DCD6E3;
+    }
+
+    .footer p {
+      color: #6B5E78;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .accent-text {
+      color: #D7975E;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="header">
+        <img src="https://bosqueaprendiz.cl/images/marjorie-profile.jpeg" alt="Marjorie Cayun">
+        <h1>Marjorie Cayun</h1>
+        <p>Psicopedagogía en Movimiento</p>
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+        <div class="greeting">Estimada Verónica,</div>
+
+        <p class="text-paragraph">
+          Junto con saludarle y esperando que se encuentre muy bien, le escribo para coordinar los últimos detalles de
+          nuestra primera sesión presencial.
+        </p>
+        <p class="text-paragraph">
+          Para asegurar el espacio de atención de forma definitiva, trabajamos bajo la modalidad de abono previo. A
+          continuación, le comparto los puntos clave de nuestro encuadre:
+        </p>
+
+        <!-- Info Card: Sesión -->
+        <div class="section-box">
+          <div class="section-title">📍 Sobre la sesión</div>
+          <div class="section-text">
+            Nos reuniremos el día <span class="highlight">jueves 30 a las 12:00</span> en el box de atención Centro en
+            Acción ubicado en <span class="highlight">Beauchef 838</span>. La sesión tiene una duración aproximada de 45
+            a 50 min. Le sugiero llegar con unos 5 minutos de anticipación para comenzar de manera puntual.
+          </div>
+        </div>
+
+        <!-- Info Card: Pago y Reserva -->
+        <div class="section-box">
+          <div class="section-title">💳 Sobre el pago y la reserva</div>
+          <div class="section-text">
+            El valor total de la sesión es de $25.000. Para confirmar la hora, solicito un abono del 50% (<span
+              class="highlight">$12.500</span>) mediante transferencia bancaria. El 50% restante se cancela el mismo día
+            de nuestra sesión.
+          </div>
+        </div>
+
+        <!-- Info Card: Cancelación -->
+        <div class="section-box" style="border-left-color: #85619A;">
+          <div class="section-title">⚠️ Política de cancelación</div>
+          <div class="section-text">
+            Entiendo que pueden surgir imprevistos de fuerza mayor. Sin embargo, para resguardar el tiempo del espacio
+            reservado, las cancelaciones o reprogramaciones deben avisarse con un <span class="highlight">mínimo de 48
+              horas de anticipación</span>. Si la cancelación se realiza fuera de ese plazo, el abono no será
+            reembolsado, ya que el box queda bloqueado exclusivamente para usted.
+          </div>
+        </div>
+
+        <!-- Bank Details -->
+        <p class="text-paragraph"
+          style="margin-bottom: 8px; font-weight: 500; color: #321644; font-family: 'Outfit', sans-serif;">
+          Datos para realizar el abono de reserva:
+        </p>
+        <div class="bank-details">
+          <table>
+            <tr>
+              <td>Banco:</td>
+              <td>Banco Falabella</td>
+            </tr>
+            <tr>
+              <td>Tipo de cuenta:</td>
+              <td>Cuenta Vista</td>
+            </tr>
+            <tr>
+              <td>N° de cuenta:</td>
+              <td>19802503006</td>
+            </tr>
+            <tr>
+              <td>RUT / Identificación:</td>
+              <td>18.484.467-2</td>
+            </tr>
+            <tr>
+              <td>Correo para comprobante:</td>
+              <td>m.cayunbustos@gmail.com</td>
+            </tr>
+          </table>
+        </div>
+
+        <p class="text-paragraph" style="margin-top: 24px;">
+          Una vez enviando el comprobante de la transferencia, <span class="accent-text">la hora queda
+            confirmada.</span>
+        </p>
+
+        <p class="text-paragraph">
+          Quedo a su completa disposición si tiene alguna duda con respecto a estas condiciones.
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p><strong>Marjorie Cayun</strong> | Psicopedagogía en Movimiento</p>
+        <p>Acompañando procesos de aprendizaje y desarrollo neurocognitivo.</p>
+      </div>
+
+    </div>
+  </div>
+</body>
+
+</html>

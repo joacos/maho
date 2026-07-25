@@ -2,16 +2,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fcfbfa; /* Blanco cálido/hueso */
-  --foreground: #1c2723; /* Verde bosque oscuro */
-  --primary: #2d6a4f;    /* Verde bosque medio */
-  --primary-light: #52b788; /* Verde menta vibrante */
-  --primary-dark: #1b4332;  /* Verde bosque profundo */
-  --accent: #d8a47f;     /* Arena/dorado cálido */
+  --background: #F8F7FA;      /* Light purple/gray tinted white */
+  --foreground: #2A2433;      /* Dark gray for readable text */
+  --primary: #58316B;         /* Deep purple from the brochure */
+  --primary-light: #85619A;   /* Medium purple for accents */
+  --primary-dark: #321644;    /* Deepest purple for emphasis */
+  --accent: #D7975E;          /* Warm gold/copper accent for highlights */
   --surface: #ffffff;
-  --surface-muted: #f4f2ee;
-  --muted: #5e6b66;      /* Verde grisáceo para textos secundarios */
-  --border: #e2dfda;
+  --surface-muted: #F0EDF4;   /* Light purple for alternate backgrounds */
+  --muted: #6B5E78;           /* Purple-gray for secondary text */
+  --border: #DCD6E3;          /* Soft purple border */
   --radius-lg: 1rem;
 }
 
