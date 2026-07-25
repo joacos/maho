@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Psicopedagogía en Movimiento | Marjorie Cayún",
+  title: "BosqueAprendiz | Psicopedagogía y Aprendizaje Integral",
   description: "Enfoque clínico integral cualitativo para el aprendizaje y desarrollo neurocognitivo.",
 };
 

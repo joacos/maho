@@ -59,7 +59,7 @@ const AUDIENCE_DATA: AudienceItem[] = [
     badge: "Estimulación Continua",
     description: "Mantenimiento y potenciación de habilidades neurocognitivas y bienestar.",
     benefits: [
-      "Programas de estimulación y reserva cognitiva",
+      "Programas de estimulación psicomotora",
       "Prevención y entrenamiento de la memoria y atención",
       "Estrategias adaptativas para el día a día",
       "Fortalecimiento de la plasticidad cerebral"
@@ -97,9 +97,8 @@ export default function AudienceSection() {
             return (
               <div
                 key={item.id}
-                className={`rounded-2xl border transition-all duration-300 bg-surface flex flex-col justify-between overflow-hidden shadow-xs hover:shadow-md ${
-                  isOpen ? "border-primary/40 ring-2 ring-primary/10" : "border-border/40 hover:border-primary/20"
-                }`}
+                className={`rounded-2xl border transition-all duration-300 bg-surface flex flex-col justify-between overflow-hidden shadow-xs hover:shadow-md ${isOpen ? "border-primary/40 ring-2 ring-primary/10" : "border-border/40 hover:border-primary/20"
+                  }`}
               >
                 <div className="p-6">
                   <div className="flex items-center justify-between gap-3 mb-4">

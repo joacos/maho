@@ -24,7 +24,7 @@ const STEPS: Step[] = [
   {
     number: 3,
     icon: ClipboardList,
-    title: "Informe y Plan Personalizado",
+    title: "Informe y Plan Personalizado (opcional)",
     description: "Elaboración de un informe clínico detallado y diseño de un plan de acompañamiento único con estrategias adaptadas a las necesidades."
   },
   {

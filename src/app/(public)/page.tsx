@@ -92,10 +92,7 @@ export default async function HomePage() {
                 <span>Enfoque Clínico Integral Cualitativo</span>
               </div>
               <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-primary-dark tracking-tight leading-tight">
-                Psicopedagogía en{" "}
-                <span className="text-primary-light underline decoration-accent decoration-3 underline-offset-6">
-                  Movimiento
-                </span>
+                Bosque<span className="text-primary-light underline decoration-accent decoration-3 underline-offset-6">Aprendiz</span>
               </h1>
               <p className="font-sans text-base sm:text-lg text-muted leading-relaxed max-w-2xl">
                 Acompaño procesos de aprendizaje y desarrollo neurocognitivo desde una mirada integral, integrando estrategias psicopedagógicas, estimulación sensorial y movimiento consciente para potenciar el bienestar y la autonomía de cada persona.
@@ -131,7 +128,7 @@ export default async function HomePage() {
                     Marjorie Cayún
                   </h3>
                   <p className="font-sans text-xs text-primary-light font-medium mt-1">
-                    Psicopedagogía en Movimiento
+                    BosqueAprendiz · Psicopedagogía
                   </p>
                 </div>
                 <p className="font-sans text-sm text-muted leading-relaxed italic">

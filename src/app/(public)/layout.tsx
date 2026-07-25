@@ -16,10 +16,10 @@ export default function PublicLayout({
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group">
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-display font-extrabold text-lg transition-transform duration-300 group-hover:scale-105">
-                PM
+                BA
               </div>
               <span className="font-display font-extrabold text-xl text-primary tracking-tight">
-                Psicopedagogía <span className="text-primary-light">en Movimiento</span>
+                Bosque<span className="text-primary-light">Aprendiz</span>
               </span>
             </Link>
 
@@ -75,10 +75,10 @@ export default function PublicLayout({
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white font-display font-extrabold text-lg">
-                  PM
+                  BA
                 </div>
                 <span className="font-display font-extrabold text-xl text-white tracking-tight">
-                  Psicopedagogía <span className="text-primary-light">en Movimiento</span>
+                  Bosque<span className="text-primary-light">Aprendiz</span>
                 </span>
               </div>
               <p className="text-sm text-surface/70 leading-relaxed max-w-sm font-sans">
@@ -143,7 +143,7 @@ export default function PublicLayout({
 
           <div className="border-t border-surface/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-surface/50 font-sans">
             <p>
-              &copy; {new Date().getFullYear()} Psicopedagogía en Movimiento. Todos los derechos reservados.
+              &copy; {new Date().getFullYear()} BosqueAprendiz. Todos los derechos reservados.
             </p>
             <p className="flex items-center gap-1">
               Desarrollado con <Heart className="w-3.5 h-3.5 fill-primary-light text-primary-light" /> en Valdivia.

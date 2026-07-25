@@ -30,12 +30,6 @@ const AREAS_LEFT: AreaItem[] = [
     description: "Evaluación integral de las capacidades cognitivas y del potencial de aprendizaje. Identificamos fortalezas y áreas prioritarias de desarrollo."
   },
   {
-    id: "pep3",
-    icon: FileCheck,
-    title: "Evaluación del Perfil Psicoeducativo (PEP-3)",
-    description: "Evaluación especializada para niños con TEA y neurodivergencias para estructurar intervenciones educativas y funcionales personalizadas."
-  },
-  {
     id: "habitos",
     icon: BookOpen,
     title: "Hábitos y Estrategias de Estudio",
@@ -47,12 +41,6 @@ const AREAS_LEFT: AreaItem[] = [
     title: "Estimulación Temprana a Párvulos",
     description: "Programa lúdico y cognitivo para niños pequeños, potenciando habilidades motoras, de lenguaje y preparación para el entorno escolar."
   },
-  {
-    id: "mindfulness",
-    icon: Smile,
-    title: "Legoterapia y Mindfulness Infantil",
-    description: "Metodologías vivenciales innovadoras para fomentar habilidades sociales, autorregulación emocional y atención plena mediante el juego."
-  }
 ];
 
 const AREAS_RIGHT: AreaItem[] = [
@@ -61,12 +49,6 @@ const AREAS_RIGHT: AreaItem[] = [
     icon: Target,
     title: "Evaluación de Funciones Ejecutivas",
     description: "Medición y estimulación de habilidades de planificación, organización, memoria de trabajo, flexibilidad cognitiva y control de impulsos."
-  },
-  {
-    id: "test_aprendizaje",
-    icon: PenTool,
-    title: "Test Específicos de Aprendizaje",
-    description: "Pruebas psicopedagógicas focalizadas en lectoescritura, razonamiento matemático y comprensión para identificar necesidades puntuales."
   },
   {
     id: "estimulacion_cognitiva",
@@ -104,9 +86,8 @@ export default function InterventionAreasSection() {
         return (
           <div
             key={item.id}
-            className={`rounded-2xl border transition-all duration-200 bg-surface overflow-hidden ${
-              isOpen ? "border-primary/40 shadow-sm" : "border-border/40 hover:border-primary/20"
-            }`}
+            className={`rounded-2xl border transition-all duration-200 bg-surface overflow-hidden ${isOpen ? "border-primary/40 shadow-sm" : "border-border/40 hover:border-primary/20"
+              }`}
           >
             <button
               type="button"
@@ -123,9 +104,8 @@ export default function InterventionAreasSection() {
                 </h3>
               </div>
               <ChevronDown
-                className={`w-5 h-5 text-muted shrink-0 transition-transform duration-300 ${
-                  isOpen ? "rotate-180 text-primary" : ""
-                }`}
+                className={`w-5 h-5 text-muted shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-primary" : ""
+                  }`}
               />
             </button>
 
