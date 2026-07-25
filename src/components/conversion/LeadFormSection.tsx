@@ -65,7 +65,7 @@ export default function LeadFormSection() {
               </div>
 
               <a
-                href={`https://wa.me/56966566977?text=${whatsappMessage}`}
+                href={`https://wa.me/56974103256?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex justify-center items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-sans font-bold text-sm shadow-md transition-all hover:-translate-y-0.5"
@@ -78,11 +78,11 @@ export default function LeadFormSection() {
             <div className="flex flex-col gap-3 font-sans text-xs sm:text-sm text-muted pt-2">
               <div className="flex items-center gap-2.5">
                 <PhoneCall className="w-4 h-4 text-primary shrink-0" />
-                <span>Teléfono / WhatsApp: +56 9 6656 6977</span>
+                <span>Teléfono / WhatsApp: +56 9 7410 3256</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-primary shrink-0" />
-                <span>Atención clínica en Modalidad Presencial y Online</span>
+                <span>Atención clínica en Modalidad Presencial (Valdivia) y Online</span>
               </div>
             </div>
           </div>
