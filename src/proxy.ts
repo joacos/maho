@@ -4,20 +4,18 @@ export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const adminCookie = req.cookies.get('admin_session')?.value;
 
-  // Protect /admin routes (except /admin/login)
-  if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
-    if (!adminCookie || adminCookie !== 'authenticated') {
-      const loginUrl = new URL('/admin/login', req.url);
-      return NextResponse.redirect(loginUrl);
+  const isLoginPage = pathname.startsWith('/admin/login');
+
+  // Protect all /admin routes except /admin/login
+  if (pathname.startsWith('/admin') && !isLoginPage) {
+    if (adminCookie !== 'authenticated') {
+      return NextResponse.redirect(new URL('/admin/login', req.url));
     }
   }
 
-  // Redirect /admin/login to /admin if already logged in
-  if (pathname === '/admin/login') {
-    if (adminCookie === 'authenticated') {
-      const adminUrl = new URL('/admin', req.url);
-      return NextResponse.redirect(adminUrl);
-    }
+  // Redirect logged-in users away from /admin/login to /admin
+  if (isLoginPage && adminCookie === 'authenticated') {
+    return NextResponse.redirect(new URL('/admin', req.url));
   }
 
   return NextResponse.next();
@@ -25,6 +23,7 @@ export function proxy(req: NextRequest) {
 
 export const config = {
   matcher: [
+    '/admin',
     '/admin/:path*',
   ],
 };
