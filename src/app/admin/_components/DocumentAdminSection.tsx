@@ -61,9 +61,9 @@ export default function DocumentAdminSection() {
   const handleCopyText = () => {
     let textToCopy = "";
     if (form.docType === "CONSENT") {
-      textToCopy = `CONSENTIMIENTO INFORMADO DE ATENCIÓN\nBosque Aprendiz\n\nFecha: ${form.date}\nCliente/Paciente: ${form.clientName}\nRUT: ${form.clientRut}\nServicio: ${form.serviceName}\nProfesional: ${form.professionalName} (${form.professionalTitle})\n\nPor medio del presente documento, el/la paciente declara haber recibido la información clara y oportuna referente a las condiciones del servicio de acompañamiento profesional.`;
+      textToCopy = `CONSENTIMIENTO INFORMADO PARA ATENCIÓN PSICOPEDAGÓGICA\n\nCon fecha ${form.date}, yo ${form.clientName || "_______________________"}, RUN ${form.clientRut || "_______________________"}, por mi propia voluntad, acepto iniciar un proceso de [Evaluación / Intervención] psicopedagógica con el/la profesional ${form.professionalName || "_______________________"}, Registro Profesional N° ____________.\n\nHe sido informado(a) de manera clara y detallada sobre los siguientes puntos:\n\nObjetivo del Proceso: El trabajo se enfocará en potenciar mis procesos cognitivos, estrategias de aprendizaje, gestión del tiempo, organización del estudio o adaptación socio-laboral, según mis necesidades específicas.\n\nMetodología y Duración: Las sesiones tendrán una duración de ______ minutos, con una frecuencia [semanal / quincenal]. El proceso contempla una revisión inicial de ____ sesiones.\n\nConfidencialidad: Toda la información compartida, así como los resultados de las evaluaciones, son estrictamente confidenciales. Solo se revelarán datos a terceros (médicos, instituciones de educación superior o empleadores) bajo mi autorización expresa y por escrito.\n\nExcepciones a la Confidencialidad: El secreto profesional solo se romperá en caso de riesgo inminente para mi integridad física o la de terceros, o por orden judicial.\n\nDerecho a Retiro: Comprendo que tengo el derecho de suspender o finalizar el proceso psicopedagógico en el momento que lo estime conveniente, notificando debidamente al profesional.\n\nFirma del Paciente: ___________________________`;
     } else if (form.docType === "CONTRACT") {
-      textToCopy = `CONTRATO DE PRESTACIÓN DE SERVICIOS PROFESIONALES\nBosque Aprendiz\n\nCon fecha ${form.date}, se celebra el contrato entre ${form.professionalName} (${form.professionalTitle}) y el/la cliente ${form.clientName} (RUT: ${form.clientRut}) para el servicio "${form.serviceName}".\n\nCláusulas acordadas según normas profesionales y de confidencialidad de Bosque Aprendiz.`;
+      textToCopy = `CONTRATO DE PRESTACIÓN DE SERVICIOS PSICOPEDAGÓGICOS\n\nEntre el/la profesional psicopedagogo(a) ${form.professionalName || "_______________________"}, RUN _______________________, en adelante "El Prestador", y Don/Doña ${form.clientName || "_______________________"}, RUN ${form.clientRut || "_______________________"}, en adelante "El Beneficiario", se acuerda el siguiente contrato de prestación de servicios particulares:\n\nPrimera (Objeto): El Prestador se compromete a entregar servicios de atención psicopedagógica individual a El Beneficiario, orientados al desarrollo de habilidades cognitivas y estrategias de aprendizaje.\n\nSegunda (Honorarios): El valor de cada sesión individual se fija en $${form.amount || "____________"} (pesos chilenos).\n\nTercera (Forma de Pago): Los pagos se realizarán de forma [por sesión / mensual anticipada] mediante [transferencia bancaria / efectivo], contra la entrega de la boleta de honorarios correspondiente.\n\nCuarta (Política de Asistencia y Cancelaciones): El Beneficiario debe avisar con un mínimo de 24 horas de anticipación si no puede asistir a una sesión programada. Si la cancelación se realiza fuera de este plazo o el paciente no se presenta, la sesión se cobrará en su totalidad.\n\nQuinta (Puntualidad): Los retrasos por parte de El Beneficiario no se compensarán al final de la sesión, respetándose el horario de término previamente acordado.\n\nSexta (Vigencia): El presente contrato tendrá una duración indefinida, pudiendo cualquiera de las partes ponerle término dando un aviso previo de al menos una sesión de anticipación.\n\nFirma El Prestador: ___________________________\nFirma El Beneficiario: ___________________________`;
     } else if (form.docType === "RECEIPT") {
       textToCopy = `COMPROBANTE DE PAGO DE HONORARIOS\nBosque Aprendiz\n\nRecibido de: ${form.clientName} (RUT: ${form.clientRut})\nConcepto: ${form.serviceName}\nFecha: ${form.date}\nMonto Total: $${form.amount} CLP\nMedio de Pago: ${form.paymentMethod}`;
     } else {
@@ -383,64 +383,78 @@ export default function DocumentAdminSection() {
 
               {/* Document Body depending on DocType */}
               {form.docType === "CONSENT" && (
-                <div className="flex flex-col gap-6 font-sans text-slate-700 text-sm leading-relaxed">
-                  <h4 className="font-display font-bold text-lg text-slate-900 text-center uppercase tracking-wide">
-                    Documento de Consentimiento Informado
+                <div className="flex flex-col gap-5 font-sans text-slate-700 text-xs leading-relaxed">
+                  <h4 className="font-display font-bold text-base text-slate-900 text-center uppercase tracking-wide">
+                    CONSENTIMIENTO INFORMADO PARA ATENCIÓN PSICOPEDAGÓGICA
                   </h4>
 
-                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-150 grid grid-cols-2 gap-4 text-xs font-sans">
-                    <div>
-                      <span className="text-slate-400 uppercase font-bold block text-3xs">Paciente / Cliente</span>
-                      <span className="font-bold text-slate-800">{form.clientName || "—"}</span>
-                    </div>
-                    <div>
-                      <span className="text-slate-400 uppercase font-bold block text-3xs">RUT / Pasaporte</span>
-                      <span className="font-bold text-slate-800">{form.clientRut || "—"}</span>
-                    </div>
-                    <div>
-                      <span className="text-slate-400 uppercase font-bold block text-3xs">Servicio Acordado</span>
-                      <span className="font-bold text-slate-800">{form.serviceName || "—"}</span>
-                    </div>
-                    <div>
-                      <span className="text-slate-400 uppercase font-bold block text-3xs">Profesional</span>
-                      <span className="font-bold text-slate-800">{form.professionalName}</span>
-                    </div>
-                  </div>
-
                   <p>
-                    Por medio del presente documento, declaro formalmente aceptar la participación en las sesiones de acompañamiento profesional dictadas por <strong>{form.professionalName}</strong> siguiendo los lineamientos profesionales, éticos y legales de la psicopedagogía.
+                    Con fecha <strong>{form.date || "____ de ____________ de 2026"}</strong>, yo <strong>{form.clientName || "_______________________"}</strong>, RUN <strong>{form.clientRut || "_______________________"}</strong>, por mi propia voluntad, acepto iniciar un proceso de [Evaluación / Intervención] psicopedagógica con el/la profesional <strong>{form.professionalName || "_______________________"}</strong>, Registro Profesional N° ____________.
                   </p>
 
-                  <ul className="list-disc pl-5 space-y-2 text-xs text-slate-650">
-                    <li>Se me ha informado detalladamente el objetivo, metodologías y frecuencia de las atenciones.</li>
-                    <li>Entiendo el compromiso de puntualidad y aviso previo de 48 horas ante cancelaciones o reprogramaciones.</li>
-                    <li>Toda la información compartida durante el proceso mantendrá estricta confidencialidad profesional.</li>
-                  </ul>
+                  <p className="font-semibold text-slate-900">
+                    He sido informado(a) de manera clara y detallada sobre los siguientes puntos:
+                  </p>
+
+                  <div className="flex flex-col gap-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <div>
+                      <strong className="block text-slate-900">Objetivo del Proceso:</strong>
+                      <span>El trabajo se enfocará en potenciar mis procesos cognitivos, estrategias de aprendizaje, gestión del tiempo, organización del estudio o adaptación socio-laboral, según mis necesidades específicas.</span>
+                    </div>
+                    <div>
+                      <strong className="block text-slate-900">Metodología y Duración:</strong>
+                      <span>Las sesiones tendrán una duración de ______ minutos, con una frecuencia [semanal / quincenal]. El proceso contempla una revisión inicial de ____ sesiones.</span>
+                    </div>
+                    <div>
+                      <strong className="block text-slate-900">Confidencialidad:</strong>
+                      <span>Toda la información compartida, así como los resultados de las evaluaciones, son estrictamente confidenciales. Solo se revelarán datos a terceros (médicos, instituciones de educación superior o empleadores) bajo mi autorización expresa y por escrito.</span>
+                    </div>
+                    <div>
+                      <strong className="block text-slate-900">Excepciones a la Confidencialidad:</strong>
+                      <span>El secreto profesional solo se romperá en caso de riesgo inminente para mi integridad física o la de terceros, o por orden judicial.</span>
+                    </div>
+                    <div>
+                      <strong className="block text-slate-900">Derecho a Retiro:</strong>
+                      <span>Comprendo que tengo el derecho de suspender o finalizar el proceso psicopedagógico en el momento que lo estime conveniente, notificando debidamente al profesional.</span>
+                    </div>
+                  </div>
                 </div>
               )}
 
               {form.docType === "CONTRACT" && (
                 <div className="flex flex-col gap-5 font-sans text-slate-700 text-xs leading-relaxed">
                   <h4 className="font-display font-bold text-base text-slate-900 text-center uppercase tracking-wide">
-                    Contrato por Prestación de Servicios Profesionales
+                    CONTRATO DE PRESTACIÓN DE SERVICIOS PSICOPEDAGÓGICOS
                   </h4>
 
                   <p>
-                    Con fecha <strong>{form.date}</strong>, entre <strong>{form.professionalName}</strong> ({form.professionalTitle}), en adelante el <em>&quot;Prestador&quot;</em>, y don/doña <strong>{form.clientName || "[Nombre Cliente]"}</strong>, RUT <strong>{form.clientRut || "[RUT]"}</strong>, en adelante el <em>&quot;Cliente&quot;</em>, se acuerda el siguiente contrato:
+                    Entre el/la profesional psicopedagogo(a) <strong>{form.professionalName || "_______________________"}</strong>, RUN <strong>_______________________</strong>, en adelante &quot;El Prestador&quot;, y Don/Doña <strong>{form.clientName || "_______________________"}</strong>, RUN <strong>{form.clientRut || "_______________________"}</strong>, en adelante &quot;El Beneficiario&quot;, se acuerda el siguiente contrato de prestación de servicios particulares:
                   </p>
 
                   <div className="flex flex-col gap-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
                     <div>
-                      <strong className="block text-slate-900">PRIMERA (Objeto):</strong>
-                      <span>El Prestador se compromete a brindar servicios profesionales de <strong>{form.serviceName}</strong>.</span>
+                      <strong className="block text-slate-900">Primera (Objeto):</strong>
+                      <span>El Prestador se compromete a entregar servicios de atención psicopedagógica individual a El Beneficiario, orientados al desarrollo de habilidades cognitivas y estrategias de aprendizaje.</span>
                     </div>
                     <div>
-                      <strong className="block text-slate-900">SEGUNDA (Modalidad y Agenda):</strong>
-                      <span>Las sesiones se realizarán en las fechas y horarios coordinados formalmente a través de la plataforma <strong>Bosque Aprendiz</strong>.</span>
+                      <strong className="block text-slate-900">Segunda (Honorarios):</strong>
+                      <span>El valor de cada sesión individual se fija en ${form.amount || "____________"} (pesos chilenos).</span>
                     </div>
                     <div>
-                      <strong className="block text-slate-900">TERCERA (Confidencialidad):</strong>
-                      <span>Ambas partes garantizan el resguardo de la información compartida y la privacidad de las sesiones.</span>
+                      <strong className="block text-slate-900">Tercera (Forma de Pago):</strong>
+                      <span>Los pagos se realizarán de forma [por sesión / mensual anticipada] mediante [transferencia bancaria / efectivo], contra la entrega de la boleta de honorarios correspondiente.</span>
+                    </div>
+                    <div>
+                      <strong className="block text-slate-900">Cuarta (Política de Asistencia y Cancelaciones):</strong>
+                      <span>El Beneficiario debe avisar con un mínimo de 24 horas de anticipación si no puede asistir a una sesión programada. Si la cancelación se realiza fuera de este plazo o el paciente no se presenta, la sesión se cobrará en su totalidad.</span>
+                    </div>
+                    <div>
+                      <strong className="block text-slate-900">Quinta (Puntualidad):</strong>
+                      <span>Los retrasos por parte de El Beneficiario no se compensarán al final de la sesión, respetándose el horario de término previamente acordado.</span>
+                    </div>
+                    <div>
+                      <strong className="block text-slate-900">Sexta (Vigencia):</strong>
+                      <span>El presente contrato tendrá una duración indefinida, pudiendo cualquiera de las partes ponerle término dando un aviso previo de al menos una sesión de anticipación.</span>
                     </div>
                   </div>
                 </div>
