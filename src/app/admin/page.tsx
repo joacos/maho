@@ -3,8 +3,9 @@
 import React, { useState, useEffect } from "react";
 import { format, addDays, getDay, startOfMonth, endOfMonth, eachDayOfInterval, isBefore, isSameDay, isToday } from "date-fns";
 import { es } from "date-fns/locale";
-import { Calendar as CalendarIcon, Clock, Lock, Unlock, Eye, Sparkles, Loader2, CheckCircle2, AlertCircle, ShieldAlert, AlertTriangle, FileText } from "lucide-react";
+import { Calendar as CalendarIcon, Clock, Lock, Unlock, Eye, Sparkles, Loader2, CheckCircle2, AlertCircle, ShieldAlert, AlertTriangle, FileText, FileCheck } from "lucide-react";
 import BlogAdminSection from "./_components/BlogAdminSection";
+import DocumentAdminSection from "./_components/DocumentAdminSection";
 
 interface Appointment {
   id: string;
@@ -28,7 +29,7 @@ interface BlockedSlot {
 }
 
 export default function AdminDashboardPage() {
-  const [activeTab, setActiveTab] = useState<"availability" | "blog">("availability");
+  const [activeTab, setActiveTab] = useState<"availability" | "blog" | "documents">("availability");
   const [selectedDate, setSelectedDate] = useState<string>(format(addDays(new Date(), 2), "yyyy-MM-dd"));
   const [currentMonth, setCurrentMonth] = useState(new Date());
   
@@ -142,7 +143,7 @@ export default function AdminDashboardPage() {
   return (
     <div className="flex flex-col gap-8 animate-fade-in">
       {/* Navigation Tabs */}
-      <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
+      <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 pb-4">
         <button
           type="button"
           onClick={() => setActiveTab("availability")}
@@ -168,10 +169,25 @@ export default function AdminDashboardPage() {
           <FileText className="w-4 h-4" />
           <span>Gestión del Blog</span>
         </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab("documents")}
+          className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl font-sans font-bold text-sm transition-all ${
+            activeTab === "documents"
+              ? "bg-primary text-white shadow-sm"
+              : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
+          }`}
+        >
+          <FileCheck className="w-4 h-4" />
+          <span>Generación de Documentos</span>
+        </button>
       </div>
 
       {activeTab === "blog" ? (
         <BlogAdminSection />
+      ) : activeTab === "documents" ? (
+        <DocumentAdminSection />
       ) : (
         <>
           {/* Overview Banner */}
