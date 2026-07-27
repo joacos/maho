@@ -30,9 +30,16 @@ interface DocumentForm {
   date: string;
   amount: string;
   paymentMethod: string;
+  paymentModality: string;
   sessionNotes: string;
   professionalName: string;
+  professionalRut: string;
   professionalTitle: string;
+  professionalRegistry: string;
+  processType: string;
+  sessionDuration: string;
+  sessionFrequency: string;
+  initialSessions: string;
 }
 
 export default function DocumentAdminSection() {
@@ -46,10 +53,17 @@ export default function DocumentAdminSection() {
     serviceName: "Sesión Individual de Aprendizaje Emocional",
     date: todayStr,
     amount: "45.000",
-    paymentMethod: "Transferencia Electrónica",
+    paymentMethod: "transferencia bancaria",
+    paymentModality: "por sesión",
     sessionNotes: "El paciente/cliente asiste a sesión de acompañamiento. Se abordan herramientas de autorregulación emocional y atención plena.",
     professionalName: "Marjorie Cayún",
+    professionalRut: "15.987.654-3",
     professionalTitle: "Psicopedagoga & Educadora - Bosque Aprendiz",
+    professionalRegistry: "987654",
+    processType: "Evaluación / Intervención",
+    sessionDuration: "45",
+    sessionFrequency: "semanal",
+    initialSessions: "4",
   });
 
   const [copied, setCopied] = useState(false);
@@ -61,9 +75,9 @@ export default function DocumentAdminSection() {
   const handleCopyText = () => {
     let textToCopy = "";
     if (form.docType === "CONSENT") {
-      textToCopy = `CONSENTIMIENTO INFORMADO PARA ATENCIÓN PSICOPEDAGÓGICA\n\nCon fecha ${form.date}, yo ${form.clientName || "_______________________"}, RUN ${form.clientRut || "_______________________"}, por mi propia voluntad, acepto iniciar un proceso de [Evaluación / Intervención] psicopedagógica con el/la profesional ${form.professionalName || "_______________________"}, Registro Profesional N° ____________.\n\nHe sido informado(a) de manera clara y detallada sobre los siguientes puntos:\n\nObjetivo del Proceso: El trabajo se enfocará en potenciar mis procesos cognitivos, estrategias de aprendizaje, gestión del tiempo, organización del estudio o adaptación socio-laboral, según mis necesidades específicas.\n\nMetodología y Duración: Las sesiones tendrán una duración de ______ minutos, con una frecuencia [semanal / quincenal]. El proceso contempla una revisión inicial de ____ sesiones.\n\nConfidencialidad: Toda la información compartida, así como los resultados de las evaluaciones, son estrictamente confidenciales. Solo se revelarán datos a terceros (médicos, instituciones de educación superior o empleadores) bajo mi autorización expresa y por escrito.\n\nExcepciones a la Confidencialidad: El secreto profesional solo se romperá en caso de riesgo inminente para mi integridad física o la de terceros, o por orden judicial.\n\nDerecho a Retiro: Comprendo que tengo el derecho de suspender o finalizar el proceso psicopedagógico en el momento que lo estime conveniente, notificando debidamente al profesional.\n\nFirma del Paciente: ___________________________`;
+      textToCopy = `CONSENTIMIENTO INFORMADO PARA ATENCIÓN PSICOPEDAGÓGICA\n\nCon fecha ${form.date || "____ de ____________ de 2026"}, yo ${form.clientName || "_______________________"}, RUN ${form.clientRut || "_______________________"}, por mi propia voluntad, acepto iniciar un proceso de [${form.processType || "Evaluación / Intervención"}] psicopedagógica con el/la profesional ${form.professionalName || "_______________________"}, Registro Profesional N° ${form.professionalRegistry || "____________"}.\n\nHe sido informado(a) de manera clara y detallada sobre los siguientes puntos:\n\nObjetivo del Proceso: El trabajo se enfocará en potenciar mis procesos cognitivos, estrategias de aprendizaje, gestión del tiempo, organización del estudio o adaptación socio-laboral, según mis necesidades específicas.\n\nMetodología y Duración: Las sesiones tendrán una duración de ${form.sessionDuration || "______"} minutos, con una frecuencia [${form.sessionFrequency || "semanal / quincenal"}]. El proceso contempla una revisión inicial de ${form.initialSessions || "____"} sesiones.\n\nConfidencialidad: Toda la información compartida, así como los resultados de las evaluaciones, son estrictamente confidenciales. Solo se revelarán datos a terceros (médicos, instituciones de educación superior o empleadores) bajo mi autorización expresa y por escrito.\n\nExcepciones a la Confidencialidad: El secreto profesional solo se romperá en caso de riesgo inminente para mi integridad física o la de terceros, o por orden judicial.\n\nDerecho a Retiro: Comprendo que tengo el derecho de suspender o finalizar el proceso psicopedagógico en el momento que lo estime conveniente, notificando debidamente al profesional.\n\nFirma del Paciente: ___________________________`;
     } else if (form.docType === "CONTRACT") {
-      textToCopy = `CONTRATO DE PRESTACIÓN DE SERVICIOS PSICOPEDAGÓGICOS\n\nEntre el/la profesional psicopedagogo(a) ${form.professionalName || "_______________________"}, RUN _______________________, en adelante "El Prestador", y Don/Doña ${form.clientName || "_______________________"}, RUN ${form.clientRut || "_______________________"}, en adelante "El Beneficiario", se acuerda el siguiente contrato de prestación de servicios particulares:\n\nPrimera (Objeto): El Prestador se compromete a entregar servicios de atención psicopedagógica individual a El Beneficiario, orientados al desarrollo de habilidades cognitivas y estrategias de aprendizaje.\n\nSegunda (Honorarios): El valor de cada sesión individual se fija en $${form.amount || "____________"} (pesos chilenos).\n\nTercera (Forma de Pago): Los pagos se realizarán de forma [por sesión / mensual anticipada] mediante [transferencia bancaria / efectivo], contra la entrega de la boleta de honorarios correspondiente.\n\nCuarta (Política de Asistencia y Cancelaciones): El Beneficiario debe avisar con un mínimo de 24 horas de anticipación si no puede asistir a una sesión programada. Si la cancelación se realiza fuera de este plazo o el paciente no se presenta, la sesión se cobrará en su totalidad.\n\nQuinta (Puntualidad): Los retrasos por parte de El Beneficiario no se compensarán al final de la sesión, respetándose el horario de término previamente acordado.\n\nSexta (Vigencia): El presente contrato tendrá una duración indefinida, pudiendo cualquiera de las partes ponerle término dando un aviso previo de al menos una sesión de anticipación.\n\nFirma El Prestador: ___________________________\nFirma El Beneficiario: ___________________________`;
+      textToCopy = `CONTRATO DE PRESTACIÓN DE SERVICIOS PSICOPEDAGÓGICOS\n\nEntre el/la profesional psicopedagogo(a) ${form.professionalName || "_______________________"}, RUN ${form.professionalRut || "_______________________"}, en adelante "El Prestador", y Don/Doña ${form.clientName || "_______________________"}, RUN ${form.clientRut || "_______________________"}, en adelante "El Beneficiario", se acuerda el siguiente contrato de prestación de servicios particulares:\n\nPrimera (Objeto): El Prestador se compromete a entregar servicios de atención psicopedagógica individual a El Beneficiario, orientados al desarrollo de habilidades cognitivas y estrategias de aprendizaje.\n\nSegunda (Honorarios): El valor de cada sesión individual se fija en $${form.amount || "____________"} (pesos chilenos).\n\nTercera (Forma de Pago): Los pagos se realizarán de forma [${form.paymentModality || "por sesión / mensual anticipada"}] mediante [${form.paymentMethod || "transferencia bancaria / efectivo"}], contra la entrega de la boleta de honorarios correspondiente.\n\nCuarta (Política de Asistencia y Cancelaciones): El Beneficiario debe avisar con un mínimo de 24 horas de anticipación si no puede asistir a una sesión programada. Si la cancelación se realiza fuera de este plazo o el paciente no se presenta, la sesión se cobrará en su totalidad.\n\nQuinta (Puntualidad): Los retrasos por parte de El Beneficiario no se compensarán al final de la sesión, respetándose el horario de término previamente acordado.\n\nSexta (Vigencia): El presente contrato tendrá una duración indefinida, pudiendo cualquiera de las partes ponerle término dando un aviso previo de al menos una sesión de anticipación.\n\nFirma El Prestador: ___________________________\nFirma El Beneficiario: ___________________________`;
     } else if (form.docType === "RECEIPT") {
       textToCopy = `COMPROBANTE DE PAGO DE HONORARIOS\nBosque Aprendiz\n\nRecibido de: ${form.clientName} (RUT: ${form.clientRut})\nConcepto: ${form.serviceName}\nFecha: ${form.date}\nMonto Total: $${form.amount} CLP\nMedio de Pago: ${form.paymentMethod}`;
     } else {
@@ -233,7 +247,7 @@ export default function DocumentAdminSection() {
             <div className="flex flex-col gap-4 font-sans text-xs">
               <div>
                 <label className="block font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                  Nombre Cliente / Paciente
+                  Nombre Cliente / Paciente / Beneficiario
                 </label>
                 <input
                   type="text"
@@ -247,7 +261,7 @@ export default function DocumentAdminSection() {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                    RUT / Identificación
+                    RUN / Identificación
                   </label>
                   <input
                     type="text"
@@ -270,18 +284,119 @@ export default function DocumentAdminSection() {
                 </div>
               </div>
 
-              <div>
-                <label className="block font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                  Servicio / Atención
-                </label>
-                <input
-                  type="text"
-                  value={form.serviceName}
-                  onChange={(e) => setForm({ ...form, serviceName: e.target.value })}
-                  placeholder="Nombre del servicio"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-primary text-slate-800 font-medium"
-                />
-              </div>
+              {form.docType === "CONSENT" && (
+                <>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                        Tipo de Proceso
+                      </label>
+                      <input
+                        type="text"
+                        value={form.processType}
+                        onChange={(e) => setForm({ ...form, processType: e.target.value })}
+                        placeholder="Evaluación / Intervención"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-primary text-slate-800 font-medium"
+                      />
+                    </div>
+                    <div>
+                      <label className="block font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                        Registro Prof. N°
+                      </label>
+                      <input
+                        type="text"
+                        value={form.professionalRegistry}
+                        onChange={(e) => setForm({ ...form, professionalRegistry: e.target.value })}
+                        placeholder="N° de Registro"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-primary text-slate-800 font-medium"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2">
+                    <div>
+                      <label className="block font-bold text-slate-700 uppercase tracking-wider mb-1.5 text-[10px]">
+                        Duración (min)
+                      </label>
+                      <input
+                        type="text"
+                        value={form.sessionDuration}
+                        onChange={(e) => setForm({ ...form, sessionDuration: e.target.value })}
+                        placeholder="45"
+                        className="w-full px-2.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-primary text-slate-800 font-medium"
+                      />
+                    </div>
+                    <div>
+                      <label className="block font-bold text-slate-700 uppercase tracking-wider mb-1.5 text-[10px]">
+                        Frecuencia
+                      </label>
+                      <input
+                        type="text"
+                        value={form.sessionFrequency}
+                        onChange={(e) => setForm({ ...form, sessionFrequency: e.target.value })}
+                        placeholder="semanal / quincenal"
+                        className="w-full px-2.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-primary text-slate-800 font-medium"
+                      />
+                    </div>
+                    <div>
+                      <label className="block font-bold text-slate-700 uppercase tracking-wider mb-1.5 text-[10px]">
+                        Sesiones Inic.
+                      </label>
+                      <input
+                        type="text"
+                        value={form.initialSessions}
+                        onChange={(e) => setForm({ ...form, initialSessions: e.target.value })}
+                        placeholder="4"
+                        className="w-full px-2.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-primary text-slate-800 font-medium"
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {form.docType === "CONTRACT" && (
+                <>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                        Honorarios ($ CLP)
+                      </label>
+                      <input
+                        type="text"
+                        value={form.amount}
+                        onChange={(e) => setForm({ ...form, amount: e.target.value })}
+                        placeholder="45.000"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-primary text-slate-800 font-medium"
+                      />
+                    </div>
+                    <div>
+                      <label className="block font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                        Forma de Pago
+                      </label>
+                      <input
+                        type="text"
+                        value={form.paymentModality}
+                        onChange={(e) => setForm({ ...form, paymentModality: e.target.value })}
+                        placeholder="por sesión / mensual anticipada"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-primary text-slate-800 font-medium"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                      Medio de Pago
+                    </label>
+                    <input
+                      type="text"
+                      value={form.paymentMethod}
+                      onChange={(e) => setForm({ ...form, paymentMethod: e.target.value })}
+                      placeholder="transferencia bancaria / efectivo"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-primary text-slate-800 font-medium"
+                    />
+                  </div>
+                </>
+              )}
 
               {form.docType === "RECEIPT" && (
                 <div className="grid grid-cols-2 gap-3">
@@ -327,16 +442,31 @@ export default function DocumentAdminSection() {
                 </div>
               )}
 
-              <div className="border-t border-slate-100 pt-3">
-                <label className="block font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                  Nombre del Profesional
-                </label>
-                <input
-                  type="text"
-                  value={form.professionalName}
-                  onChange={(e) => setForm({ ...form, professionalName: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-primary text-slate-800 font-medium"
-                />
+              <div className="border-t border-slate-100 pt-3 flex flex-col gap-3">
+                <div>
+                  <label className="block font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                    Nombre del Profesional (El Prestador)
+                  </label>
+                  <input
+                    type="text"
+                    value={form.professionalName}
+                    onChange={(e) => setForm({ ...form, professionalName: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-primary text-slate-800 font-medium"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                    RUN del Profesional
+                  </label>
+                  <input
+                    type="text"
+                    value={form.professionalRut}
+                    onChange={(e) => setForm({ ...form, professionalRut: e.target.value })}
+                    placeholder="15.987.654-3"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-primary text-slate-800 font-medium"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -389,7 +519,7 @@ export default function DocumentAdminSection() {
                   </h4>
 
                   <p>
-                    Con fecha <strong>{form.date || "____ de ____________ de 2026"}</strong>, yo <strong>{form.clientName || "_______________________"}</strong>, RUN <strong>{form.clientRut || "_______________________"}</strong>, por mi propia voluntad, acepto iniciar un proceso de [Evaluación / Intervención] psicopedagógica con el/la profesional <strong>{form.professionalName || "_______________________"}</strong>, Registro Profesional N° ____________.
+                    Con fecha <strong>{form.date || "____ de ____________ de 2026"}</strong>, yo <strong>{form.clientName || "_______________________"}</strong>, RUN <strong>{form.clientRut || "_______________________"}</strong>, por mi propia voluntad, acepto iniciar un proceso de [<strong>{form.processType || "Evaluación / Intervención"}</strong>] psicopedagógica con el/la profesional <strong>{form.professionalName || "_______________________"}</strong>, Registro Profesional N° <strong>{form.professionalRegistry || "____________"}</strong>.
                   </p>
 
                   <p className="font-semibold text-slate-900">
@@ -403,7 +533,7 @@ export default function DocumentAdminSection() {
                     </div>
                     <div>
                       <strong className="block text-slate-900">Metodología y Duración:</strong>
-                      <span>Las sesiones tendrán una duración de ______ minutos, con una frecuencia [semanal / quincenal]. El proceso contempla una revisión inicial de ____ sesiones.</span>
+                      <span>Las sesiones tendrán una duración de <strong>{form.sessionDuration || "______"}</strong> minutos, con una frecuencia [<strong>{form.sessionFrequency || "semanal / quincenal"}</strong>]. El proceso contempla una revisión inicial de <strong>{form.initialSessions || "____"}</strong> sesiones.</span>
                     </div>
                     <div>
                       <strong className="block text-slate-900">Confidencialidad:</strong>
@@ -428,7 +558,7 @@ export default function DocumentAdminSection() {
                   </h4>
 
                   <p>
-                    Entre el/la profesional psicopedagogo(a) <strong>{form.professionalName || "_______________________"}</strong>, RUN <strong>_______________________</strong>, en adelante &quot;El Prestador&quot;, y Don/Doña <strong>{form.clientName || "_______________________"}</strong>, RUN <strong>{form.clientRut || "_______________________"}</strong>, en adelante &quot;El Beneficiario&quot;, se acuerda el siguiente contrato de prestación de servicios particulares:
+                    Entre el/la profesional psicopedagogo(a) <strong>{form.professionalName || "_______________________"}</strong>, RUN <strong>{form.professionalRut || "_______________________"}</strong>, en adelante &quot;El Prestador&quot;, y Don/Doña <strong>{form.clientName || "_______________________"}</strong>, RUN <strong>{form.clientRut || "_______________________"}</strong>, en adelante &quot;El Beneficiario&quot;, se acuerda el siguiente contrato de prestación de servicios particulares:
                   </p>
 
                   <div className="flex flex-col gap-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
@@ -438,11 +568,11 @@ export default function DocumentAdminSection() {
                     </div>
                     <div>
                       <strong className="block text-slate-900">Segunda (Honorarios):</strong>
-                      <span>El valor de cada sesión individual se fija en ${form.amount || "____________"} (pesos chilenos).</span>
+                      <span>El valor de cada sesión individual se fija en $<strong>{form.amount || "____________"}</strong> (pesos chilenos).</span>
                     </div>
                     <div>
                       <strong className="block text-slate-900">Tercera (Forma de Pago):</strong>
-                      <span>Los pagos se realizarán de forma [por sesión / mensual anticipada] mediante [transferencia bancaria / efectivo], contra la entrega de la boleta de honorarios correspondiente.</span>
+                      <span>Los pagos se realizarán de forma [<strong>{form.paymentModality || "por sesión / mensual anticipada"}</strong>] mediante [<strong>{form.paymentMethod || "transferencia bancaria / efectivo"}</strong>], contra la entrega de la boleta de honorarios correspondiente.</span>
                     </div>
                     <div>
                       <strong className="block text-slate-900">Cuarta (Política de Asistencia y Cancelaciones):</strong>
