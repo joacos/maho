@@ -1,18 +1,30 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export function proxy(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+  const adminCookie = req.cookies.get('admin_session')?.value;
+
+  // Protect /admin routes (except /admin/login)
+  if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
+    if (!adminCookie || adminCookie !== 'authenticated') {
+      const loginUrl = new URL('/admin/login', req.url);
+      return NextResponse.redirect(loginUrl);
+    }
+  }
+
+  // Redirect /admin/login to /admin if already logged in
+  if (pathname === '/admin/login') {
+    if (adminCookie === 'authenticated') {
+      const adminUrl = new URL('/admin', req.url);
+      return NextResponse.redirect(adminUrl);
+    }
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico, sitemap.xml, robots.txt (metadata files)
-     */
-    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
+    '/admin/:path*',
   ],
 };

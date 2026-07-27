@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Heart, LayoutDashboard, Calendar, Lock, Home, Sparkles } from "lucide-react";
+import LogoutButton from "./_components/LogoutButton";
 
 export const metadata = {
   title: "Admin - Mente y Aprendizaje Valdivia",
@@ -47,11 +48,12 @@ export default function AdminLayout({
               </Link>
             </nav>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 font-sans font-bold text-[10px] uppercase border border-emerald-250">
                 <Sparkles className="w-3 h-3" />
                 <span>Admin Activo</span>
               </span>
+              <LogoutButton />
             </div>
           </div>
         </div>
