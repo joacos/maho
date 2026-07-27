@@ -15,10 +15,11 @@ import {
   User,
   Calendar,
   DollarSign,
-  ShieldCheck
+  ShieldCheck,
+  Scale
 } from "lucide-react";
 
-type DocumentType = "CONSENT" | "CERTIFICATE" | "RECEIPT" | "REPORT";
+type DocumentType = "CONSENT" | "CONTRACT" | "RECEIPT" | "REPORT";
 
 interface DocumentForm {
   docType: DocumentType;
@@ -61,8 +62,8 @@ export default function DocumentAdminSection() {
     let textToCopy = "";
     if (form.docType === "CONSENT") {
       textToCopy = `CONSENTIMIENTO INFORMADO DE ATENCIÓN\nBosque Aprendiz\n\nFecha: ${form.date}\nCliente/Paciente: ${form.clientName}\nRUT: ${form.clientRut}\nServicio: ${form.serviceName}\nProfesional: ${form.professionalName} (${form.professionalTitle})\n\nPor medio del presente documento, el/la paciente declara haber recibido la información clara y oportuna referente a las condiciones del servicio de acompañamiento profesional.`;
-    } else if (form.docType === "CERTIFICATE") {
-      textToCopy = `CERTIFICADO DE ASISTENCIA Y ATENCIÓN\nBosque Aprendiz\n\nCertifico que ${form.clientName} (RUT: ${form.clientRut}) asistió a la sesión de "${form.serviceName}" realizada con fecha ${form.date}.\n\nProfesional a cargo: ${form.professionalName}\n${form.professionalTitle}`;
+    } else if (form.docType === "CONTRACT") {
+      textToCopy = `CONTRATO DE PRESTACIÓN DE SERVICIOS PROFESIONALES\nBosque Aprendiz\n\nCon fecha ${form.date}, se celebra el contrato entre ${form.professionalName} (${form.professionalTitle}) y el/la cliente ${form.clientName} (RUT: ${form.clientRut}) para el servicio "${form.serviceName}".\n\nCláusulas acordadas según normas profesionales y de confidencialidad de Bosque Aprendiz.`;
     } else if (form.docType === "RECEIPT") {
       textToCopy = `COMPROBANTE DE PAGO DE HONORARIOS\nBosque Aprendiz\n\nRecibido de: ${form.clientName} (RUT: ${form.clientRut})\nConcepto: ${form.serviceName}\nFecha: ${form.date}\nMonto Total: $${form.amount} CLP\nMedio de Pago: ${form.paymentMethod}`;
     } else {
@@ -110,10 +111,10 @@ export default function DocumentAdminSection() {
             <span>Generador Administrativo</span>
           </div>
           <h2 className="font-display font-bold text-2xl text-slate-800">
-            Generación de Documentos y Certificados
+            Generación de Documentos y Contratos
           </h2>
           <p className="font-sans text-sm text-slate-500 mt-1">
-            Genera e imprime consentimientos, certificados de atención, recibos y resúmenes clínicos de forma inmediata.
+            Genera e imprime consentimientos, contratos de prestación de servicios, recibos y resúmenes clínicos.
           </p>
         </div>
 
@@ -174,15 +175,15 @@ export default function DocumentAdminSection() {
 
               <button
                 type="button"
-                onClick={() => setForm({ ...form, docType: "CERTIFICATE" })}
+                onClick={() => setForm({ ...form, docType: "CONTRACT" })}
                 className={`p-3.5 rounded-2xl border text-left flex flex-col gap-2 transition-all ${
-                  form.docType === "CERTIFICATE"
+                  form.docType === "CONTRACT"
                     ? "border-primary bg-primary/5 text-primary shadow-2xs font-bold"
                     : "border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold"
                 }`}
               >
-                <ShieldCheck className="w-5 h-5 text-primary shrink-0" />
-                <span className="font-sans text-xs">Certificado Asistencia</span>
+                <Scale className="w-5 h-5 text-primary shrink-0" />
+                <span className="font-sans text-xs">Contrato de Servicios</span>
               </button>
 
               <button
@@ -361,7 +362,7 @@ export default function DocumentAdminSection() {
                 <div className="text-right flex flex-col items-end">
                   <span className="inline-block px-3 py-1 bg-slate-100 border border-slate-200 rounded-lg text-slate-800 font-sans font-bold text-xs uppercase tracking-wider">
                     {form.docType === "CONSENT" && "Consentimiento Informado"}
-                    {form.docType === "CERTIFICATE" && "Certificado de Atención"}
+                    {form.docType === "CONTRACT" && "Contrato de Servicios"}
                     {form.docType === "RECEIPT" && "Comprobante de Pago"}
                     {form.docType === "REPORT" && "Informe de Sesión"}
                   </span>
@@ -409,23 +410,30 @@ export default function DocumentAdminSection() {
                 </div>
               )}
 
-              {form.docType === "CERTIFICATE" && (
-                <div className="flex flex-col gap-6 font-sans text-slate-700 text-sm leading-relaxed py-4">
-                  <h4 className="font-display font-bold text-xl text-slate-900 text-center uppercase tracking-wide">
-                    Certificado de Asistencia y Atención
+              {form.docType === "CONTRACT" && (
+                <div className="flex flex-col gap-5 font-sans text-slate-700 text-xs leading-relaxed">
+                  <h4 className="font-display font-bold text-base text-slate-900 text-center uppercase tracking-wide">
+                    Contrato por Prestación de Servicios Profesionales
                   </h4>
 
-                  <div className="my-6 text-center text-slate-800 text-base leading-loose">
-                    Se certifica que don/doña <strong>{form.clientName || "[Nombre del Cliente]"}</strong>, Cédula de Identidad RUT <strong>{form.clientRut || "[RUT]"}</strong>, ha participado activamente en la sesión de atención correspondiente al servicio de:
-                  </div>
-
-                  <div className="bg-primary/5 border border-primary/20 rounded-2xl p-6 text-center font-display font-bold text-lg text-primary">
-                    {form.serviceName || "[Nombre del Servicio]"}
-                  </div>
-
-                  <p className="text-xs text-slate-500 text-center mt-2">
-                    Se extiende el presente certificado para los fines que el interesado/a estime convenientes, con fecha de emisión <strong>{form.date}</strong>.
+                  <p>
+                    Con fecha <strong>{form.date}</strong>, entre <strong>{form.professionalName}</strong> ({form.professionalTitle}), en adelante el <em>&quot;Prestador&quot;</em>, y don/doña <strong>{form.clientName || "[Nombre Cliente]"}</strong>, RUT <strong>{form.clientRut || "[RUT]"}</strong>, en adelante el <em>&quot;Cliente&quot;</em>, se acuerda el siguiente contrato:
                   </p>
+
+                  <div className="flex flex-col gap-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <div>
+                      <strong className="block text-slate-900">PRIMERA (Objeto):</strong>
+                      <span>El Prestador se compromete a brindar servicios profesionales de <strong>{form.serviceName}</strong>.</span>
+                    </div>
+                    <div>
+                      <strong className="block text-slate-900">SEGUNDA (Modalidad y Agenda):</strong>
+                      <span>Las sesiones se realizarán en las fechas y horarios coordinados formalmente a través de la plataforma <strong>Bosque Aprendiz</strong>.</span>
+                    </div>
+                    <div>
+                      <strong className="block text-slate-900">TERCERA (Confidencialidad):</strong>
+                      <span>Ambas partes garantizan el resguardo de la información compartida y la privacidad de las sesiones.</span>
+                    </div>
+                  </div>
                 </div>
               )}
 
