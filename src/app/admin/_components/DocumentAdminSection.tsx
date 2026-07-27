@@ -80,6 +80,17 @@ export default function DocumentAdminSection() {
       {/* Print Stylesheet overlay */}
       <style jsx global>{`
         @media print {
+          @page {
+            margin: 0;
+            size: auto;
+          }
+          html, body {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            min-height: 100vh !important;
+          }
           body * {
             visibility: hidden;
           }
@@ -91,11 +102,13 @@ export default function DocumentAdminSection() {
             left: 0;
             top: 0;
             width: 100%;
-            padding: 20px;
-            background: white !important;
-            color: black !important;
+            min-height: 100vh;
+            padding: 40px;
+            background: #ffffff !important;
+            color: #000000 !important;
             box-shadow: none !important;
             border: none !important;
+            border-radius: 0 !important;
           }
           .no-print {
             display: none !important;
@@ -163,11 +176,10 @@ export default function DocumentAdminSection() {
               <button
                 type="button"
                 onClick={() => setForm({ ...form, docType: "CONSENT" })}
-                className={`p-3.5 rounded-2xl border text-left flex flex-col gap-2 transition-all ${
-                  form.docType === "CONSENT"
-                    ? "border-primary bg-primary/5 text-primary shadow-2xs font-bold"
-                    : "border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold"
-                }`}
+                className={`p-3.5 rounded-2xl border text-left flex flex-col gap-2 transition-all ${form.docType === "CONSENT"
+                  ? "border-primary bg-primary/5 text-primary shadow-2xs font-bold"
+                  : "border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold"
+                  }`}
               >
                 <FileSignature className="w-5 h-5 text-primary shrink-0" />
                 <span className="font-sans text-xs">Consentimiento Informado</span>
@@ -176,11 +188,10 @@ export default function DocumentAdminSection() {
               <button
                 type="button"
                 onClick={() => setForm({ ...form, docType: "CONTRACT" })}
-                className={`p-3.5 rounded-2xl border text-left flex flex-col gap-2 transition-all ${
-                  form.docType === "CONTRACT"
-                    ? "border-primary bg-primary/5 text-primary shadow-2xs font-bold"
-                    : "border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold"
-                }`}
+                className={`p-3.5 rounded-2xl border text-left flex flex-col gap-2 transition-all ${form.docType === "CONTRACT"
+                  ? "border-primary bg-primary/5 text-primary shadow-2xs font-bold"
+                  : "border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold"
+                  }`}
               >
                 <Scale className="w-5 h-5 text-primary shrink-0" />
                 <span className="font-sans text-xs">Contrato de Servicios</span>
@@ -189,11 +200,10 @@ export default function DocumentAdminSection() {
               <button
                 type="button"
                 onClick={() => setForm({ ...form, docType: "RECEIPT" })}
-                className={`p-3.5 rounded-2xl border text-left flex flex-col gap-2 transition-all ${
-                  form.docType === "RECEIPT"
-                    ? "border-primary bg-primary/5 text-primary shadow-2xs font-bold"
-                    : "border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold"
-                }`}
+                className={`p-3.5 rounded-2xl border text-left flex flex-col gap-2 transition-all ${form.docType === "RECEIPT"
+                  ? "border-primary bg-primary/5 text-primary shadow-2xs font-bold"
+                  : "border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold"
+                  }`}
               >
                 <Receipt className="w-5 h-5 text-primary shrink-0" />
                 <span className="font-sans text-xs">Comprobante de Pago</span>
@@ -202,11 +212,10 @@ export default function DocumentAdminSection() {
               <button
                 type="button"
                 onClick={() => setForm({ ...form, docType: "REPORT" })}
-                className={`p-3.5 rounded-2xl border text-left flex flex-col gap-2 transition-all ${
-                  form.docType === "REPORT"
-                    ? "border-primary bg-primary/5 text-primary shadow-2xs font-bold"
-                    : "border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold"
-                }`}
+                className={`p-3.5 rounded-2xl border text-left flex flex-col gap-2 transition-all ${form.docType === "REPORT"
+                  ? "border-primary bg-primary/5 text-primary shadow-2xs font-bold"
+                  : "border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold"
+                  }`}
               >
                 <BookOpen className="w-5 h-5 text-primary shrink-0" />
                 <span className="font-sans text-xs">Informe de Sesión</span>
@@ -399,12 +408,12 @@ export default function DocumentAdminSection() {
                   </div>
 
                   <p>
-                    Por medio del presente documento, declaro formalmente aceptar la participación en las sesiones de acompañamiento profesional dictadas por <strong>{form.professionalName}</strong> en el marco del programa <strong>Bosque Aprendiz</strong>.
+                    Por medio del presente documento, declaro formalmente aceptar la participación en las sesiones de acompañamiento profesional dictadas por <strong>{form.professionalName}</strong> siguiendo los lineamientos profesionales, éticos y legales de la psicopedagogía.
                   </p>
 
                   <ul className="list-disc pl-5 space-y-2 text-xs text-slate-650">
                     <li>Se me ha informado detalladamente el objetivo, metodologías y frecuencia de las atenciones.</li>
-                    <li>Entiendo el compromiso de puntualidad y aviso previo de 24 horas ante cancelaciones o reprogramaciones.</li>
+                    <li>Entiendo el compromiso de puntualidad y aviso previo de 48 horas ante cancelaciones o reprogramaciones.</li>
                     <li>Toda la información compartida durante el proceso mantendrá estricta confidencialidad profesional.</li>
                   </ul>
                 </div>
