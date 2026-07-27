@@ -355,7 +355,7 @@ export default function DocumentAdminSection() {
                     Acompañamiento Educativo & Psicopedagógico
                   </span>
                   <span className="font-sans text-3xs text-slate-400">
-                    www.bosqueaprendiz.cl &bull; Marjorie Cayún
+                    Marjorie Cayún
                   </span>
                 </div>
 
