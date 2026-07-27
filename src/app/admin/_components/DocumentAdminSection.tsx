@@ -349,13 +349,13 @@ export default function DocumentAdminSection() {
               <div className="flex justify-between items-start border-b border-slate-200 pb-6 mb-8">
                 <div className="flex flex-col gap-1">
                   <span className="font-display font-bold text-2xl text-slate-900 tracking-tight">
-                    Bosque Aprendiz
+                    Marjorie Cayún
                   </span>
                   <span className="font-sans text-xs text-slate-500 font-semibold">
                     Acompañamiento Educativo & Psicopedagógico
                   </span>
                   <span className="font-sans text-3xs text-slate-400">
-                    Marjorie Cayún
+                    Bosque Aprendiz
                   </span>
                 </div>
 
